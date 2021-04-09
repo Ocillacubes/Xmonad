@@ -1,0 +1,4 @@
+Config { 
+     font =         "xft:Bitstream Vera Sans Mono:size=9:bold:antialias=true"
+	 , bgColor = "#2E2E2E"
+   }
