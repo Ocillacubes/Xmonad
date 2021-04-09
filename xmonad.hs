@@ -141,6 +141,6 @@ main = xmonad =<< statusBar cmd pp kb conf
 startupPrograms :: X ()
 startupPrograms = do
   spawnOnce "~/.fehbg &"
-  spawnOnce "picom --config /home/ocilla/.config/picom/picom.conf -b &"
+  spawnOnce "picom --config $HOME/.config/picom/picom.conf -b &"
   spawnOnce "unclutter &"
   spawnOnce "flameshot &"

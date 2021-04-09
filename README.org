@@ -1,2 +1,19 @@
 * Xmonad
-My Xmonad Config Files
+  My Xmonad Config Files
+
+
+** Features
+- uses xmobar
+- switch between workspaces
+- vim key navigation
+- keys to open programs
+- started working on colors
+- certain windows float by default
+- custom workspace names
+
+
+** Plans
+- change colors
+- fix bar
+- better keybinds
+- *maybe* gaps
