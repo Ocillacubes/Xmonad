@@ -111,8 +111,8 @@ keyBinds conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. shiftMask, xK_l     ), sendMessage Expand)
 
   -- Switch montiors
-  , ((modMask,                xK_Right ), nextScreen)
-  , ((modMask,                xK_Left  ), prevScreen)
+  , ((modMask,                xK_l ), nextScreen)
+  , ((modMask,                xK_h  ), prevScreen)
 
   -- Kill programs
   , ((modMask,                xK_q     ), kill)
