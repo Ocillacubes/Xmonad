@@ -58,6 +58,7 @@ hook_m = composeAll [ isFullscreen                   --> doFullFloat -- Rules on
                     , className =? "Gimp"            --> doFloat
                     , className =? "Trackma-gtk"     --> doFloat
                     , className =? "KeePassXC"       --> doFloat
+                    , className =? "feh"       --> doFloat
                     ]
 
 
