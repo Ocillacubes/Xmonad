@@ -43,13 +43,14 @@ border_color_normal = "#FFD6E4"
 border_color_focused :: String
 border_color_focused = "#C6A2E0"
 
--- Bar --
-tenshiPP = defaultPP { ppCurrent = xmobarColor "#429942" "" . wrap "<" ">" -- This is copy pasted from the arch wiki for now, will change colors soon
-                     , ppHidden = xmobarColor "#C98F0A" ""
-                     , ppHiddenNoWindows = xmobarColor "#C9A34E" ""
-                     , ppLayout = xmobarColor "#C9A34E" ""
-                     , ppTitle =  xmobarColor "#C9A34E" "" . shorten 80
-                     , ppSep = xmobarColor "#429942" "" " | "
+-- Bar -- Run emacs with rainbow-mode enabled to see the colors
+-- The basis for this section is taken from the Arch Wiki
+tenshiPP = defaultPP { ppCurrent = xmobarColor "#FFA6AD" "" . wrap "<" ">" 
+                     , ppHidden = xmobarColor "#B176DF" ""
+                     , ppHiddenNoWindows = xmobarColor "#C6A2E0" ""
+                     , ppLayout = xmobarColor "#D69FA2" ""
+                     , ppTitle =  xmobarColor "#DB1929" "" . shorten 80 
+                     , ppSep = xmobarColor "#D4CCFF" "" " | "
                      }
 
 -- Window Management --
