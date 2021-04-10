@@ -91,7 +91,7 @@ keyBinds conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask,               xK_w     ), safeSpawn "qutebrowser"          [])
   , ((modMask .|. shiftMask, xK_w     ), safeSpawn "firefox"              [])
   , ((modMask,               xK_r     ), safeSpawn "pcmanfm"              [])
-  , ((modMask,               xK_e     ), safeSpawn "emacs"                [])
+  , ((modMask,               xK_e     ), spawn     "emacsclient -c"         )
   , ((modMask,               xK_p     ), safeSpawn "keepassxc"            [])
   , ((modMask,               xK_a     ), safeSpawn "trackma-gtk"          [])
   , ((modMask,               xK_c     ), safeSpawn "element-desktop"      [])
