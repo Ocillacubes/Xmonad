@@ -54,12 +54,15 @@ tenshiPP = defaultPP { ppCurrent = xmobarColor "#FFA6AD" "" . wrap "<" ">"
                      }
 
 -- Window Management --
-hook_m = composeAll [ isFullscreen                   --> doFullFloat -- Rules on what programs should be floating
-                    , className =? "mpv"             --> doFloat
-                    , className =? "Gimp"            --> doFloat
-                    , className =? "Trackma-gtk"     --> doFloat
-                    , className =? "KeePassXC"       --> doFloat
-                    , className =? "feh"       --> doFloat
+hook_m = composeAll [ isFullscreen                      --> doFullFloat -- Rules on what programs should be floating
+                    , className =? "mpv"                --> doFloat
+                    , className =? "Gimp"               --> doFloat
+                    , className =? "Trackma-gtk"        --> doFloat
+                    , className =? "Whalebird"          --> doFloat
+                    , className =? "KeePassXC"          --> doFloat
+                    , className =? "feh"                --> doFloat
+                    , className =? "Hydrus Client"      --> doFloat
+                    , className =? "Guw"                --> doFloat
                     ]
 
 
@@ -86,16 +89,20 @@ keyBinds :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 keyBinds conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Launch programs
-  [ ((modMask,               xK_Return), safeSpawn (XMonad.terminal conf) [])
-  , ((modMask,               xK_d     ), safeSpawn "dmenu_run"            [])
-  , ((modMask,               xK_w     ), safeSpawn "qutebrowser"          [])
-  , ((modMask .|. shiftMask, xK_w     ), safeSpawn "firefox"              [])
-  , ((modMask,               xK_r     ), safeSpawn "pcmanfm"              [])
-  , ((modMask,               xK_e     ), spawn     "emacsclient -c"         )
-  , ((modMask,               xK_p     ), safeSpawn "keepassxc"            [])
-  , ((modMask,               xK_a     ), safeSpawn "trackma-gtk"          [])
-  , ((modMask,               xK_c     ), safeSpawn "element-desktop"      [])
-  , ((modMask,               xK_g     ), safeSpawn "gimp"                 [])
+  [ ((modMask,               xK_Return), safeSpawn (XMonad.terminal conf)     [])
+  , ((modMask,               xK_d     ), spawn     "rofi -show run"             )
+  , ((modMask,               xK_w     ), spawn     "bash ~/scripts/bookmarks"   )
+  , ((modMask .|. shiftMask, xK_w     ), safeSpawn "qutebrowser"              [])
+  , ((modMask,               xK_r     ), safeSpawn "pcmanfm"                  [])
+  , ((modMask,               xK_e     ), spawn     "emacsclient -c"             )
+  , ((modMask,               xK_p     ), safeSpawn "keepassxc"                [])
+  , ((modMask,               xK_a     ), safeSpawn "trackma-gtk"              [])
+  , ((modMask .|. shiftMask, xK_b     ), safeSpawn "hydrus-client"            [])
+  , ((modMask .|. shiftMask, xK_d     ), spawn     "bash ~/scripts/hh.sh"       )
+  , ((modMask,               xK_c     ), safeSpawn "element-desktop"          [])
+  , ((modMask .|. shiftMask, xK_c     ), safeSpawn "lbry"                     [])
+  , ((modMask,               xK_m     ), safeSpawn "whalebird"                [])
+  , ((modMask,               xK_g     ), safeSpawn "gimp"                     [])
 
   -- Focus windows
   , ((modMask,               xK_j     ), windows W.focusDown)
@@ -142,6 +149,7 @@ main = xmonad =<< statusBar cmd pp kb conf
 -- Launch Programs on startup --
 startupPrograms :: X ()
 startupPrograms = do
+  spawnOnce "xmodmap -e 'keycode 94 = Super_R'"
   spawnOnce "~/.fehbg &"
   spawnOnce "picom --config $HOME/.config/picom/picom.conf -b &"
   spawnOnce "unclutter &"
